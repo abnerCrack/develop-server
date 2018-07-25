@@ -1,6 +1,6 @@
 {
   "name": "develop-server",
-  "version": "0.0.0-development",
+  "version": "1.0.1",
   "main": "index.js",
   "repository": "https://github.com/abnerCrack/develop-server.git",
   "author": "Raymond Li <it1011@qq.com>",
