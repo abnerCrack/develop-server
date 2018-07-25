@@ -1,13 +1,13 @@
 {
-  "name": "@talentui/dev-server",
+  "name": "develop-server",
   "version": "0.0.0-development",
   "main": "index.js",
-  "repository": "https://github.com/talentui/dev-server.git",
+  "repository": "https://github.com/abnerCrack/develop-server.git",
   "author": "Raymond Li <it1011@qq.com>",
   "license": "MIT",
   "SSL-Pass-Phrase": "talentui",
   "bin": {
-    "talentui-dev-server": "./index.js"
+    "ds": "./index.js"
   },
   "scripts": {
     "build": "npm run rm && node ./compile/index.js",
