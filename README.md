@@ -1,8 +1,15 @@
 # develop-server
 
-# todo 
+> 用法
 
-npm install develop-server -g
+````
+  npm install develop-server -g
+  ds
+  open http://localhost
+  
+````
+
+# todo 
 
 - [X] 支持https 
 - [ ] 支持多域名配置
