@@ -16,7 +16,9 @@
     "cm": "git-cz",
     "debug-build": "node --inspect  ./compile/index.js",
     "prepublish": "npm run build-prod",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once"
+
   },
   "devDependencies": {
     "@talentui/biz-helper": "^1.0.1",
@@ -35,7 +37,8 @@
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "semantic-release": "^8.2.0",
+    "semantic-release": "^15.9.3",
+    "travis-deploy-once": "^5.0.1",
     "socket.io-client": "^2.0.4",
     "webpack": "^3.9.1"
   },
