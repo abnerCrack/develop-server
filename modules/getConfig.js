@@ -2,7 +2,6 @@ const path = require('path');
 const fs = require('fs');
 const constants = require('./constants');
 const configPath = path.resolve(constants.homePath, constants.configFile);
-
 function readConfigData(path){
     return JSON.parse(fs.readFileSync(path, 'utf8'));
 }
