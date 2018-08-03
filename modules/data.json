@@ -30,8 +30,8 @@
         "ip": "60.28.207.67"
     },
     "talentui": {
-        "template": "\\/ux\\/{{project}}\\/release\\/dist\\/(?:(main|common|webpack-bootstrap|app)-\\w*((\\.bundle)\\.min(\\.js)|\\w*(\\.chunk)\\.min(\\.js))|(.*\\.chunk\\.js)|(.*\\.hot-update\\.js(?:on)?)|((?:\\w+\\/)+.*))",
-        "projects": [
+            "template": "\\/ux\\/{{project}}\\/release\\/dist\\/(?:(main|common|webpack-bootstrap)-\\w*(\\.chunk)\\.min(\\.js)|(.*\\.chunk\\.js)|(.*\\.hot-update\\.js(?:on)?)|((?:\\w+\\/)+.*))",
+            "projects": [
             {
                 "name": "upaas-portal",
                 "port": "3000",
