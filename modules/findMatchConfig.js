@@ -20,7 +20,7 @@ function searchInPass(desciptions) {
         desciptions.identifier = matched.name;
         desciptions.responseTarget = `${desciptions.requestProtocol}://${
             config.target.ip
-        }`;
+            }`;
         desciptions.responseType = responseType.remote;
         desciptions.responsePath = requestPath;
         desciptions.changeOrigin = false;
@@ -94,14 +94,14 @@ function searchInTalentUI(desciptions) {
         let regx = new RegExp(template.replace(talentuiReplacer, name));
         return regx.test(requestPath);
     });
+
     if (matched) {
         desciptions.responseType = responseType.remote;
         desciptions.decision = proxyDecision.talentui;
         desciptions.identifier = matched.name;
         desciptions.responseTarget = `http://localhost:${matched.port}`;
-        desciptions.responsePath = new RegExp(
-            template.replace(talentuiReplacer, matched.name)
-        )
+        const newTemplate = template.replace(talentuiReplacer, matched.name)
+        desciptions.responsePath = new RegExp(newTemplate)
             .exec(requestPath)
             .slice(1)
             .join("");
@@ -110,6 +110,33 @@ function searchInTalentUI(desciptions) {
     return false;
 }
 
+
+function searchInTalentExtend(desciptions) {
+    let { requestPath } = desciptions;
+    let { extend: { template, projects } } = getConfig();
+    let matched = projects.find(project => {
+        let { name, enabled } = project;
+        if (!enabled) return false;
+        let regx = new RegExp(template.replace(talentuiReplacer, name));
+        return regx.test(requestPath);
+    });
+    if (matched) {
+        desciptions.responseType = responseType.remote;
+        desciptions.decision = proxyDecision.talentui;
+        desciptions.identifier = matched.name;
+        desciptions.responseTarget = `http://localhost:${matched.port}`;
+        const newTemplate = template.replace(talentuiReplacer, matched.name)
+        desciptions.responsePath = new RegExp(newTemplate)
+            .exec(requestPath)
+            .slice(1)
+            .join("")
+            .replace('.bundle','');
+        return true;
+    }
+    return false;
+}
+
+// 
 module.exports = function findMatchConfig(req) {
     let desciptions = {
         type: 'proxy',
@@ -124,7 +151,9 @@ module.exports = function findMatchConfig(req) {
         searchInPass(desciptions) ||
         searchInDirect(desciptions) ||
         searchInSpecial(desciptions) ||
-        searchInTalentUI(desciptions)
+        searchInTalentUI(desciptions) ||
+        searchInTalentExtend(desciptions)
+
     ) {
     } else {
         desciptions.responseType = responseType.remote;
@@ -132,7 +161,7 @@ module.exports = function findMatchConfig(req) {
         desciptions.decision = proxyDecision.notMatched;
         desciptions.responseTarget = `${desciptions.requestProtocol}://${
             getConfig().target.ip
-        }`;
+            }`;
         desciptions.responsePath = desciptions.requestPath;
     }
     return desciptions;

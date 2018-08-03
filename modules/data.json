@@ -47,5 +47,16 @@
             "reg": "/ux/upaas/@talentui/dll-react/release/dist/dll-react-15.6.3.min.js",
             "enabled": false
         }
-    ]
+    ],
+    "extend": {
+        "template": "\\/ux\\/{{project}}\\/release\\/dist\\/(?:(app)-\\w*(\\.bundle)\\.min(\\.js)|(.*\\.bundle\\.js)|(.*\\.hot-update\\.js(?:on)?)|((?:\\w+\\/)+.*))",
+        "projects": [
+            {
+                "name": "tenantbase",
+                "port": "3000",
+                "id": "981f5410-de1c-11e7-a954-2d672b89896c",
+                "enabled": true
+            }
+        ]
+    }
 }

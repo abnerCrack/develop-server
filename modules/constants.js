@@ -1,5 +1,11 @@
+
+const path = require('path')
+const configPath = path.resolve(__dirname,'./data.json')
+
+//方便调试
 module.exports = {
-    configFile: ".tdsconfig.json",
+    // configFile: configPath,
+    configFile: '.tdsconfig.json',
     homePath:
         process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE,
     talentuiReplacer: /{{\s*project\s*}}/,
